@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'app_widget.dart';
-import 'core/database/sqlite_connection_factory.dart';
+import 'core/database/sqlite/sqlite_connection_factory.dart';
 
 class MyApp extends StatelessWidget {
   final String title;

@@ -39,6 +39,7 @@ dependencies:
   path: ^1.8.3
   intl: ^0.18.1
   sqflite_common: ^2.5.0
+  synchronized: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -62,9 +63,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  - assets/json/cidades.json
-  - assets/images/
+  assets:
+    - assets/json/cidades.json
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -77,26 +78,10 @@ assets:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-fonts:
-  - family: TodoListIcons
-    fonts:
-      - asset: assets/fonts/TodoListIcons.ttf
-  - family: Raleway
-    fonts:
-      - asset: assets/fonts/Raleway-Black.ttf
-        weight: 900
-      - asset: assets/fonts/Raleway-Bold.ttf
-        weight: 700
-      - asset: assets/fonts/Raleway-Regular.ttf
-  - family: RobotoCondensed
-    fonts:
-      - asset: assets/fonts/RobotoCondensed-Bold.ttf
-        weight: 700
-      - asset: assets/fonts/RobotoCondensed-Light.ttf
-        weight: 300
-      - asset: assets/fonts/RobotoCondensed-Regular.ttf
-      - asset: assets/fonts/RobotoCondensed-Italic.ttf
-        style: italic
+  fonts:
+    - family: TodoListIcons
+      fonts:
+        - asset: assets/fonts/TodoListIcons.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

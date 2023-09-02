@@ -1,4 +1,4 @@
-import 'package:example_provider_02/src/core/database/migration/migration.dart';
+import 'package:example_provider_02/src/core/database/sqlite/migration/migration_interface.dart';
 
 import 'migration/migration_v1.dart';
 import 'migration/migration_v2.dart';

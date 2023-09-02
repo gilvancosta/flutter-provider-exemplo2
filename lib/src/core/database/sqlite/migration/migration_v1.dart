@@ -1,6 +1,6 @@
 import 'package:sqflite_common/sqlite_api.dart';
 
-import 'migration.dart';
+import 'migration_interface.dart';
 
 class MigrationV1 implements Migration {
   @override

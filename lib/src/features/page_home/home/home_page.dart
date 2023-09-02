@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/widgets/drawer/drawer_v1_widget.dart';
+import '../../../core/widgets/drawer/drawer_v1_widget.dart';
 
 class HomePageApp extends StatefulWidget {
   final String title;
