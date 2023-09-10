@@ -4,7 +4,7 @@ import 'constantes.dart';
 
 
 
-sealed class MyAppTheme {
+sealed class MyAppThemeV1 {
   static const defaultInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(
       Radius.circular(8),

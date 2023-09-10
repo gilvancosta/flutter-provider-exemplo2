@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TodoListLogo extends StatelessWidget {
-  const TodoListLogo({Key? key}) : super(key: key);
+class AppLogoLoginWidget extends StatelessWidget {
+  const AppLogoLoginWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,13 @@ class TodoListLogo extends StatelessWidget {
       children: [
         Image.asset(
           'assets/images/logo.png',
-          height: 100,
+          height: 200,
         ),
-        const Text(
-          'Todo List 1',
-        //  style: context.textTheme.titleLarge,
-        )
+        const Text('My APP',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ))
       ],
     );
   }
