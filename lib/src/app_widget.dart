@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:example_provider_02/src/features/auth/auth_module.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'core/database/sqlite/sqlite_adm_connection.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<AppWidget> {
   void initState() {
     super.initState();
 
-    // FirebaseAuth auth = FirebaseAuth.instance;
+     FirebaseAuth auth = FirebaseAuth.instance;
 
     WidgetsBinding.instance.addObserver(sqliteAdmConnection); // adicionando o ciclo de vida na aplicação
   }

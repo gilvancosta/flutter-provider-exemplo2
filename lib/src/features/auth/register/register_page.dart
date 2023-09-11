@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:validatorless/validatorless.dart';
 
-import 'package:example_provider_02/src/core/notifier/default_listener_notifier.dart';
 import 'package:example_provider_02/src/core/ui/theme/app_theme_extensions.dart';
 
 import '../../../core/validators/validators.dart';
