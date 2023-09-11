@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
-import 'package:example_provider_02/src/core/ui/theme/app_theme_extensions.dart';
-
+import '../../../core/notifier/default_listener_notifier.dart';
 import '../../../core/validators/validators.dart';
 import '../../../core/widgets/TextFormField/textformfield_widget.dart';
 import '../../../core/widgets/logo/app_logo_login_widget.dart';
+import '../../../core/ui/theme/app_theme_extensions.dart';
+
+import 'register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -17,6 +19,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formkey = GlobalKey<FormState>();
+
   final _emailEC = TextEditingController();
   final _passwordEC = TextEditingController();
   final _confirmPasswordEC = TextEditingController();
@@ -32,22 +35,19 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-/*    var defaultListner = DefaultListenerNotifier(changeNotifier: context.read<RegisterController>());
+    var defaultListner = DefaultListenerNotifier(changeNotifier: context.read<RegisterController>());
     defaultListner.listener(
       context: context,
       sucessVoidCallback: (notifier, listenerInstance) {
         listenerInstance.dispose();
-        // Navigator.of(context).pop();
+        Navigator.of(context).pop();
       },
-
-
-
 
       //Esse atributo é opcional
       //errorCallback: (notifier, listenerInstance) {
       //  print('Deu Erro !!!!');
       //}
-    ); */
+    );
     /*  context.read<RegisterController>().addListener(() {
       final controller = context.read<RegisterController>();
       var success = controller.success;
@@ -140,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: _confirmPasswordEC,
                     validator: Validatorless.multiple([
                       Validatorless.required('Senha obrigatória'),
-                      Validators.compate(_passwordEC, 'Senha diferente de confirma senha'),
+                      Validators.compare(_passwordEC, 'Confirmação de senha é diferente'),
                     ]),
                   ),
                   const SizedBox(
@@ -155,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           final email = _emailEC.text;
                           final password = _passwordEC.text;
 
-                          // context.read<RegisterController>().registerUser(email, password);
+                          context.read<RegisterController>().registerUser(email, password);
                         }
                       },
                       style: ElevatedButton.styleFrom(
