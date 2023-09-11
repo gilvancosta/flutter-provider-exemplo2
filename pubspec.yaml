@@ -44,6 +44,7 @@ dependencies:
   synchronized: ^3.1.0
   flutter_signin_button: ^2.0.0
   flutter_overlay_loader: ^2.0.0
+  firebase_core: ^2.15.1
   firebase_auth: ^4.9.0
 
 dev_dependencies:
