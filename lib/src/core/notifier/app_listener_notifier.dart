@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import '../ui/theme/messages.dart';
+
+import '../ui/theme/app_messages.dart';
 import 'app_change_notifier.dart';
 
 
@@ -30,7 +31,7 @@ class AppListenerNotifier {
         if (errorCallback != null) {
           errorCallback(changeNotifier, this);
         }
-        Messages.of(context).showError(changeNotifier.error ?? 'Erro interno');
+        AppMessages.of(context).showError(changeNotifier.error ?? 'Erro interno');
       } else if (changeNotifier.isSuccess) {
        // if (sucessVoidCallback != null) {
           sucessVoidCallback(changeNotifier, this);

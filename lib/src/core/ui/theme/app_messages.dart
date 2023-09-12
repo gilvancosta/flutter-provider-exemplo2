@@ -1,12 +1,12 @@
 import 'package:example_provider_02/src/core/ui/theme/app_theme_extensions.dart';
 import 'package:flutter/material.dart';
 
-class Messages {
+class AppMessages {
   final BuildContext context;
-  Messages._(this.context);
+  AppMessages._(this.context);
 
-  factory Messages.of(BuildContext context) {
-    return Messages._(context);
+  factory AppMessages.of(BuildContext context) {
+    return AppMessages._(context);
   }
 
   void showError(String message) => _showMessage(message, Colors.red);
