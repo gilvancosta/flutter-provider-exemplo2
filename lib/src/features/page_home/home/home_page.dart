@@ -1,8 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:example_provider_02/src/core/ui/theme/app_theme_extensions.dart';
+import 'package:example_provider_02/src/features/page_home/home/widgets/home_drawer.dart';
+import 'package:example_provider_02/src/features/page_home/home/widgets/home_filters.dart';
+import 'package:example_provider_02/src/features/page_home/home/widgets/home_header.dart';
+import 'package:example_provider_02/src/features/page_home/home/widgets/home_tasks.dart';
+import 'package:example_provider_02/src/features/page_home/home/widgets/home_week_filter.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/notifier/app_listener_notifier.dart';
+import '../../../core/ui/theme/app_icons.dart';
 import '../../../models/task_filter_enum.dart';
 import '../../tasks/tasks_module.dart';
 import 'home_controller.dart';
@@ -72,9 +79,9 @@ class _TabsScreenState extends State<HomePage> {
         elevation: 0,
         actions: [
           PopupMenuButton(
-            icon: const Icon(TodoListIcons.filter),
+            icon: const Icon(AppIcons.filter),
             onSelected: (value) {
-              widget._homeController.showOrHideFinishTask();
+              widget.homeController.showOrHideFinishTask();
             },
             itemBuilder: (_) => [
               PopupMenuItem<bool>(

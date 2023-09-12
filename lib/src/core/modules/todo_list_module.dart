@@ -1,17 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:example_provider_02/src/core/modules/todo_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
 
-import 'todo_list_page.dart';
 
 abstract class TodoListModule {
-  final List<SingleChildWidget>? _bindings;
   final Map<String, WidgetBuilder> _routers;
+  final List<SingleChildWidget>? _bindings;
 
   TodoListModule({
     List<SingleChildWidget>? bindings,
     required Map<String, WidgetBuilder> routers,
-  })  : _bindings = bindings,
-        _routers = routers;
+  })  : _routers = routers,
+        _bindings = bindings;
 
   Map<String, WidgetBuilder> get routers {
     return _routers.map(
@@ -24,7 +25,7 @@ abstract class TodoListModule {
       ),
     );
   }
-/* 
+
   Widget getPage(String path, BuildContext context) {
     final widgetBuilder = _routers[path];
     if (widgetBuilder != null) {
@@ -34,5 +35,5 @@ abstract class TodoListModule {
       );
     }
     throw Exception();
-  } */
+  }
 }

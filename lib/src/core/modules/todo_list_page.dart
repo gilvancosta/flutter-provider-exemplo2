@@ -3,9 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 class TodoListPage extends StatelessWidget {
-    final List<SingleChildWidget>? _binding;
+  final List<SingleChildWidget>? _binding;
   final WidgetBuilder _page;
-
 
   const TodoListPage({
     Key? key,
