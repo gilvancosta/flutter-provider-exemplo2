@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/notifier/app_listener_notifier.dart';
 import '../../../models/task_filter_enum.dart';
+import '../../tasks/tasks_module.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
