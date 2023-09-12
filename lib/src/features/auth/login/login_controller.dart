@@ -5,6 +5,7 @@ import '../../../services/user/user_service.dart';
 
 class LoginController extends AppChangeNotifier {
   final UserService _userService;
+  
   String? infoMessage;
 
   LoginController({required UserService userService}) : _userService = userService;
@@ -13,6 +14,7 @@ class LoginController extends AppChangeNotifier {
 
   Future<void> googleLogin() async {
     try {
+     //await
       showLoadingAndResetState();
       infoMessage = null;
       notifyListeners();
@@ -33,7 +35,7 @@ class LoginController extends AppChangeNotifier {
     }
   }
 
-  void login(String email, String password) async {
+   Future<void> login(String email, String password) async {
     try {
       showLoadingAndResetState();
       infoMessage = null;

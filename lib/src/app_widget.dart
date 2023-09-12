@@ -7,6 +7,7 @@ import 'core/database/sqlite/sqlite_adm_connection.dart';
 import 'core/ui/theme/app_themeV2.dart';
 
 
+import 'features/auth/login/login_page.dart';
 import 'features/page_home/home/home_page.dart';
 
 import 'features/page_home/splash/splash01_page.dart';
@@ -29,7 +30,7 @@ class _MyAppState extends State<AppWidget> {
   void initState() {
     super.initState();
 
-     FirebaseAuth auth = FirebaseAuth.instance;
+     // FirebaseAuth auth = FirebaseAuth.instance;
 
     WidgetsBinding.instance.addObserver(sqliteAdmConnection); // adicionando o ciclo de vida na aplicação
   }
@@ -58,14 +59,14 @@ class _MyAppState extends State<AppWidget> {
           return null;
         } else {
           return MaterialPageRoute(builder: (_) {
-            return HomePageApp(title: widget.title);
+            return const LoginPage();
           });
         }
       },
       // funciona tipo fosse uma página 404
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
-          return HomePageApp(title: widget.title);
+          return const LoginPage();
         });
       },
     );

@@ -1,51 +1,118 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:example_provider_02/src/core/ui/theme/app_theme_extensions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/drawer/drawer_v1_widget.dart';
+import '../../../core/notifier/app_listener_notifier.dart';
+import '../../../models/task_filter_enum.dart';
+import 'home_controller.dart';
 
-class HomePageApp extends StatefulWidget {
-  final String title;
+class HomePage extends StatefulWidget {
 
-  const HomePageApp({super.key, required this.title});
+  final HomeController homeController;
+  const HomePage({
+    Key? key,
+    required this.homeController,
+  }) : super(key: key);
 
   @override
-  State<HomePageApp> createState() => _TabsScreenState();
+  State<HomePage> createState() => _TabsScreenState();
 }
 
-class _TabsScreenState extends State<HomePageApp> {
-  int _counter = 0;
+class _TabsScreenState extends State<HomePage> {
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+  @override
+  void initState() {
+    super.initState();
+    AppListenerNotifier(changeNotifier: widget.homeController).listener(
+        context: context,
+        sucessVoidCallback: (notifier, listenerInstance) {
+          listenerInstance.dispose();
+        });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.homeController.loadTotalTasks();
+      widget.homeController.findTasks(filter: TaskFilterEnum.today);
     });
   }
+
+
+  Future<void> _goToCreateTask(BuildContext context) async {
+    await Navigator.of(context).push(
+      //MaterialPageRoute(
+      //  builder: (_) => TasksModule().getPage('/task/create', context),
+      //),
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          animation = CurvedAnimation(parent: animation, curve: Curves.easeInQuad);
+          return ScaleTransition(
+            scale: animation,
+            alignment: Alignment.bottomRight,
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return TasksModule().getPage('/task/create', context);
+        },
+      ),
+    );
+    widget.homeController.refreshPage();
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      drawer: const DrawerV1Widget(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+        iconTheme: IconThemeData(color: context.primaryColor),
+        backgroundColor: const Color(0xFFFAFBFE),
+        elevation: 0,
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(TodoListIcons.filter),
+            onSelected: (value) {
+              widget._homeController.showOrHideFinishTask();
+            },
+            itemBuilder: (_) => [
+              PopupMenuItem<bool>(
+                value: true,
+                child: Text(
+                  '${widget.homeController.showFinishingTasks ? 'Esconder' : 'Mostrar'} tarefas concluidas',
+                ),
+              )
+            ],
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        backgroundColor: context.primaryColor,
+        onPressed: () => _goToCreateTask(context),
         child: const Icon(Icons.add),
+      ),
+      backgroundColor: const Color(0xFFFAFBFE),
+      drawer: HomeDrawer(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
+                minWidth: constraints.maxWidth,
+              ),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: const IntrinsicHeight(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [HomeHeader(), HomeFilters(), HomeWeekFilter(), HomeTasks()],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

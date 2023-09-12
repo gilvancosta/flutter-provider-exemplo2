@@ -1,7 +1,13 @@
+// ignore_for_file: avoid_print
+
+import 'package:example_provider_02/src/features/auth/login/login_controller.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
+import '../../../core/notifier/app_listener_notifier.dart';
+import '../../../core/ui/theme/app_messages.dart';
 import '../../../core/widgets/TextFormField/textformfield_widget.dart';
 import '../../../core/widgets/logo/app_logo_login_widget.dart';
 
@@ -21,6 +27,18 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    AppListenerNotifier(changeNotifier: context.read<LoginController>()).listener(
+        context: context,
+        everVoidCallback: (notifier, listenerInstance) {
+          if (notifier is LoginController) {
+            if (notifier.hasInfo) {
+              AppMessages.of(context).showInfo(notifier.infoMessage!);
+            }
+          }
+        },
+        sucessVoidCallback: (notifier, listenerNotifier) {
+          print('Login efetuado com sucesso !!!!!');
+        });
   }
 
   @override
@@ -54,7 +72,10 @@ class _LoginPageState extends State<LoginPage> {
                                 label: 'E-Mail',
                                 controller: _emailEC,
                                 focusNode: _emailFocus,
-                                validator: Validatorless.multiple([Validatorless.required('E-mail obrigatório'), Validatorless.email('E-mail inválido')]),
+                                validator: Validatorless.multiple([
+                                  Validatorless.required('E-mail obrigatório'),
+                                  Validatorless.email('E-mail inválido'),
+                                ]),
                               ),
                               const SizedBox(height: 20),
                               TextFormFieldWidget(
@@ -71,11 +92,28 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      if (_emailEC.text.isNotEmpty) {
+                                        // Recuperar senha
+                                        context.read<LoginController>().forgotPassword(_emailEC.text);
+                                      } else {
+                                        _emailFocus.requestFocus();
+                                        AppMessages.of(context).showError('Digite um e-mail para recuperar a senha');
+                                      }
+                                    },
                                     child: const Text('Forgot password?'),
                                   ),
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      final formValid = _formKey.currentState?.validate() ?? false;
+
+                                      if (formValid) {
+                                        final email = _emailEC.text;
+                                        final password = _passwordEC.text;
+
+                                        context.read<LoginController>().login(email, password);
+                                      }
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
@@ -118,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                                   borderSide: BorderSide.none,
                                 ),
                                 onPressed: () {
-                                  // context.read<LoginController>().googleLogin();
+                                  context.read<LoginController>().googleLogin();
                                 },
                               ),
                               Row(

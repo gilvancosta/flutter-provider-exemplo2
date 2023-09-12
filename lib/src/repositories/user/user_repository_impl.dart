@@ -1,14 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
+
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-
 import '../../core/exception/app_auth_exception.dart';
-import './user_repository.dart';
+import 'user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  FirebaseAuth _firebaseAuth;
+ final FirebaseAuth _firebaseAuth;
 
   UserRepositoryImpl({required FirebaseAuth firebaseAuth}) : _firebaseAuth = firebaseAuth;
 

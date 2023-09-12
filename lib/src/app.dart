@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'app_widget.dart';
 import 'core/database/sqlite/sqlite_connection_factory.dart';
-import 'repositories/user/tasks_repository_impl.dart';
+import 'repositories/user/user_repository_impl.dart';
 import 'services/user/user_service.dart';
 import 'services/user/user_service_impl.dart';
 
