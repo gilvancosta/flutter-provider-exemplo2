@@ -1,9 +1,9 @@
 import '../../../core/exception/app_auth_exception.dart';
-import '../../../core/notifier/default_change_notifier.dart';
+import '../../../core/notifier/app_change_notifier.dart';
 import '../../../services/user/user_service.dart';
 
 
-class LoginController extends DefaultChangeNotifier {
+class LoginController extends AppChangeNotifier {
   final UserService _userService;
   String? infoMessage;
 

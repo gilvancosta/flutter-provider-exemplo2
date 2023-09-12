@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../core/notifier/default_listener_notifier.dart';
+import '../../../core/notifier/app_listener_notifier.dart';
 import '../../../core/validators/validators.dart';
 import '../../../core/widgets/TextFormField/textformfield_widget.dart';
 import '../../../core/widgets/logo/app_logo_login_widget.dart';
@@ -35,13 +35,14 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    var defaultListner = DefaultListenerNotifier(changeNotifier: context.read<RegisterController>());
+    var defaultListner = AppListenerNotifier(changeNotifier: context.read<RegisterController>());
     defaultListner.listener(
       context: context,
       sucessVoidCallback: (notifier, listenerInstance) {
         listenerInstance.dispose();
         Navigator.of(context).pop();
       },
+
 
       //Esse atributo é opcional
       //errorCallback: (notifier, listenerInstance) {

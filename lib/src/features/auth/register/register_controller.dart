@@ -1,8 +1,8 @@
 import '../../../core/exception/app_auth_exception.dart';
-import '../../../core/notifier/default_change_notifier.dart';
+import '../../../core/notifier/app_change_notifier.dart';
 import '../../../services/user/user_service.dart';
 
-class RegisterController extends DefaultChangeNotifier {
+class RegisterController extends AppChangeNotifier {
   final UserService _userService;
 
   RegisterController({required UserService userService}) : _userService = userService;

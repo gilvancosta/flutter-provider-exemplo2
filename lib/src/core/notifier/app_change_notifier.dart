@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class DefaultChangeNotifier extends ChangeNotifier {
+class AppChangeNotifier extends ChangeNotifier {
   bool _loading = false;
   String? _error;
   bool _sucess = false;
