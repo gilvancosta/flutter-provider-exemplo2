@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:example_provider_02/src/ui/auth/auth_module.dart';
+import 'package:example_provider_02/src/ui/users_module/user_module.dart';
 
 import 'package:flutter/material.dart';
 
@@ -46,8 +46,8 @@ class _MyAppState extends State<AppWidget> {
       theme: MyAppThemeV2.theme,
       // initialRoute: '/login',
       routes: {
-        ...AuthModule().routers,
-      },
+        ...UserModule().routers,
+      }, 
       home: const Splash01Page(),
     );
   }

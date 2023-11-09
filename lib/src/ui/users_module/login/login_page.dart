@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:example_provider_02/src/ui/auth/login/login_controller.dart';
+import 'package:example_provider_02/src/ui/users_module/login/controller/login_controller.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter/material.dart';

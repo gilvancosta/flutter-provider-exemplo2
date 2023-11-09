@@ -23,10 +23,13 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(create: (_) => Object()),
-         Provider(create: (_) => FirebaseAuth.instance),
-         Provider(create: (_) => SqliteConnectionFactory(), lazy: false), // o lazy false faz com que o provider seja criado antes de qualquer coisa
-         Provider<UserRepository>(create: (context) => UserRepositoryImpl(firebaseAuth: context.read())),
-         Provider<UserService>(create: (context) => UserServiceImpl(userRepository: context.read())),
+        Provider(create: (_) => FirebaseAuth.instance),
+        Provider(
+            create: (_) => SqliteConnectionFactory(),
+            lazy:
+                false), // o lazy false faz com que o provider seja criado antes de qualquer coisa
+        Provider<UserRepository>(create: (context) => UserRepositoryImpl(firebaseAuth: context.read())),
+        Provider<UserService>(create: (context) => UserServiceImpl(userRepository: context.read())),
         //  ChangeNotifierProvider(create: (context) => AuthProvider(firebaseAuth: context.read(), userService: context.read())..loadListener(), lazy: false)
       ],
       child: AppWidget(title: title),

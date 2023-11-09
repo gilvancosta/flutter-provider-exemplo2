@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sqlite_connection_factory.dart';
 
-class SqliteAdmConnection with WidgetsBindingObserver {
+class SqliteAdmConnection with WidgetsBindingObserver { // o bjetivo do WidgetsBindingObserver é observar o ciclo de vida da aplicação
   // inicia uma instancia do SqliteConnectionFactory para controlar seu estado
   final connection = SqliteConnectionFactory();
 

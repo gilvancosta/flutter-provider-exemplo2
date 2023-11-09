@@ -2,7 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
 
-import 'sqlite_migration_fectory.dart';
+import 'sqlite_migration_factory.dart';
 
 /// Database connection factory for sqlite
 /// possui o conceito de Singleton para que seja criada apenas uma instancia da classe
@@ -14,9 +14,12 @@ class SqliteConnectionFactory {
   static const _databaseName = 'DB_TODO_LIST';
 
   static SqliteConnectionFactory? _instance;
+  
+ // Cria uma instancia do banco de dados para futuras verificações se está aberto ou não
+  Database? _db;
 
-  Database? _db; // Cria uma instancia do banco de dados para futuras verificações se está aberto ou não
-  final _lock = Lock(); // é uma classe que permite que apenas uma thread execute o código por vez
+  // é uma classe que permite que apenas uma thread execute o código por vez
+  final _lock = Lock(); 
 
   // construtor privado
   SqliteConnectionFactory._();
@@ -30,10 +33,12 @@ class SqliteConnectionFactory {
   }
 
   Future<Database> openConnection() async {
-    var databasePath = await getDatabasesPath(); //(package) é utilizado para pegar o caminho do banco de dados
-    var databasePathFinal = join(databasePath, _databaseName); // o join é utilizado para juntar o caminho do banco de dados com o nome do banco de dados
+    var databasePath =
+        await getDatabasesPath(); //(package) é utilizado para pegar o caminho do banco de dados
+    var databasePathFinal = join(databasePath,
+        _databaseName); // o join é utilizado para juntar o caminho do banco de dados com o nome do banco de dados
     if (_db == null) {
-      await _lock.synchronized(() async {
+      await _lock.synchronized(() async { // o _lock é utilizado para que apenas uma thread execute o código por vez
         _db ??= await openDatabase(
           databasePathFinal,
           version: _version,
@@ -46,10 +51,6 @@ class SqliteConnectionFactory {
     }
 
     return _db!;
-  }
-  void closeConnection() {
-    _db?.close();
-    _db = null;
   }
 
   Future<void> _onConfigure(Database db) async {
@@ -79,5 +80,9 @@ class SqliteConnectionFactory {
   }
 
   Future<void> _onDowngrade(Database db, int oldVersion, int version) async {}
-}
 
+  void closeConnection() {
+    _db?.close();
+    _db = null;
+  }
+}

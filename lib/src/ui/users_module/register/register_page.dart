@@ -8,7 +8,7 @@ import '../../../core/widgets/TextFormField/textformfield_widget.dart';
 import '../../../core/widgets/logo/app_logo_login_widget.dart';
 import '../../../core/ui/theme/app_theme_extensions.dart';
 
-import 'register_controller.dart';
+import 'controller/register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
