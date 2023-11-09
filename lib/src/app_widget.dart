@@ -47,28 +47,12 @@ class _MyAppState extends State<AppWidget> {
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
       theme: MyAppThemeV2.theme,
-      initialRoute: '/login',
+     // initialRoute: '/login',
       routes: {
         ...AuthModule().routers,
       },
       home: const Splash01Page(),
-      onGenerateRoute: (settings) {
-        if (settings.name == '/alguma-coisa') {
-          return null;
-        } else if (settings.name == '/outra-coisa') {
-          return null;
-        } else {
-          return MaterialPageRoute(builder: (_) {
-            return const LoginPage();
-          });
-        }
-      },
-      // funciona tipo fosse uma página 404
-      onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (_) {
-          return const LoginPage();
-        });
-      },
+
     );
   }
 }
