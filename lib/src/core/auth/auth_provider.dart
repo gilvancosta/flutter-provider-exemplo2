@@ -2,7 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../services/user/user_service.dart';
+import '../../domain/services/user/user_service.dart';
 import 'package:example_provider_02/src/core/navigator/todo_list_navigator.dart';
 
 

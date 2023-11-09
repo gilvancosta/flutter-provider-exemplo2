@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:example_provider_02/src/features/auth/auth_module.dart';
+import 'package:example_provider_02/src/ui/auth/auth_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +7,10 @@ import 'core/database/sqlite/sqlite_adm_connection.dart';
 import 'core/ui/theme/app_themeV2.dart';
 
 
-import 'features/auth/login/login_page.dart';
-import 'features/page_home/home/home_page.dart';
+import 'ui/auth/login/login_page.dart';
+import 'ui/page_home/home/home_page.dart';
 
-import 'features/page_home/splash/splash01_page.dart';
+import 'ui/page_home/splash/splash01_page.dart';
 
 class AppWidget extends StatefulWidget {
   final String title;
