@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'app_widget.dart';
-import 'core/database/sqlite/sqlite_connection_factory.dart';
+import 'data/datasource/sqlite/sqlite_connection_factory.dart';
 import 'domain/repositories/user/user_repository_impl.dart';
 import 'domain/services/user/user_service.dart';
 import 'domain/services/user/user_service_impl.dart';

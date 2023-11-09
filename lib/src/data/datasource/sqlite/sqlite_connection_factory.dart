@@ -5,7 +5,7 @@ import 'package:synchronized/synchronized.dart';
 import 'sqlite_migration_fectory.dart';
 
 /// Database connection factory for sqlite
-/// possue o conceito de sigton para que seja criada apenas uma instancia da classe
+/// possui o conceito de Singleton para que seja criada apenas uma instancia da classe
 /// O objetivo é que seja criada apenas uma conexão com o banco de dados
 /// deixar as conexões abertas pode causar problemas de performance e corromper os arquivos do banco de dados
 ///
@@ -18,7 +18,7 @@ class SqliteConnectionFactory {
   Database? _db; // Cria uma instancia do banco de dados para futuras verificações se está aberto ou não
   final _lock = Lock(); // é uma classe que permite que apenas uma thread execute o código por vez
 
-  // cosntrutor privado
+  // construtor privado
   SqliteConnectionFactory._();
 
   // factory é um construtor que retorna uma instancia da classe

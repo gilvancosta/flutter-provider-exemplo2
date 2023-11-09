@@ -1,5 +1,5 @@
 
-import '../../../core/database/sqlite/sqlite_connection_factory.dart';
+import '../../../data/datasource/sqlite/sqlite_connection_factory.dart';
 import '../../models/task_model.dart';
 import './tasks_repository.dart';
 

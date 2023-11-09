@@ -1,14 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:example_provider_02/src/ui/auth/auth_module.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 
-import 'core/database/sqlite/sqlite_adm_connection.dart';
+import 'data/datasource/sqlite/sqlite_adm_connection.dart';
 import 'core/ui/theme/app_themeV2.dart';
-
-
-import 'ui/auth/login/login_page.dart';
-import 'ui/page_home/home/home_page.dart';
 
 import 'ui/page_home/splash/splash01_page.dart';
 
@@ -30,9 +26,10 @@ class _MyAppState extends State<AppWidget> {
   void initState() {
     super.initState();
 
-     // FirebaseAuth auth = FirebaseAuth.instance;
+    // FirebaseAuth auth = FirebaseAuth.instance;
 
-    WidgetsBinding.instance.addObserver(sqliteAdmConnection); // adicionando o ciclo de vida na aplicação
+    WidgetsBinding.instance.addObserver(
+        sqliteAdmConnection); // adicionando o ciclo de vida na aplicação
   }
 
   @override
@@ -47,12 +44,11 @@ class _MyAppState extends State<AppWidget> {
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
       theme: MyAppThemeV2.theme,
-     // initialRoute: '/login',
+      // initialRoute: '/login',
       routes: {
         ...AuthModule().routers,
       },
       home: const Splash01Page(),
-
     );
   }
 }
